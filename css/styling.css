@@ -1,3 +1,4 @@
+
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: 550px}
     
@@ -54,6 +55,10 @@ body {
     border: 0px solid #fff;
     max-width: 100%;
     height: auto;
+}
+
+.text-uppercase { 
+  font-size: 14pt;
 }
 
 .navbar-nav>li>a {
@@ -167,7 +172,7 @@ ul {
     float: left;
   }
   
-  li a {
+ .nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -202,6 +207,11 @@ a, a:hover, a:focus {
 
 .list-group{
   margin-bottom: 0px; 
+}
+
+.list-group-cols{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /* New labels */ 
