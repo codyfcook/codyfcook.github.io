@@ -200,18 +200,14 @@ a, a:hover, a:focus {
   color: white;
 }
 
-/* List group coloring */
+/* List group coloring and spacing */
 .list-group-item{
   border: 0px; 
 }
 
 .list-group{
-  margin-bottom: 0px; 
-}
-
-.list-group-cols{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  border: 0px; 
+  margin-bottom: 0px;
 }
 
 /* New labels */ 
