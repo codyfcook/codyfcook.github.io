@@ -149,13 +149,19 @@ ul {
     overflow: hidden;
   }
   
- .nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 8px 8px;
-    text-decoration: none;
-  }
+.nav a {
+  display: block;
+  text-align: center;
+  padding: 8px 8px;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px 8px;
+  text-decoration: none;
+}
 
 /* Link color */ 
 a, a:hover, a:focus {
@@ -204,7 +210,8 @@ a, a:hover, a:focus {
   .img-responsive{padding: 50px 0 0 0; margin-bottom: 1em;}
   .about-well{font-size:16px;}
   .body{font-size:14px;}
-  .text-uppercase{font-size:16px;}
+  .text-uppercase{font-size:13px;}
+  .navbar-brand{font-size:18px;}
   .row.content {height: auto;} 
   .main-content{margin-left:0%;}
   .research-top-title{margin:50px 0 0 0;}
