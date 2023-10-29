@@ -132,6 +132,7 @@ h3 {
     margin-bottom:0px;
     background-color: #fff;
     max-height:40px;
+    margin: 0 15px 0 15px;
 }
 
 .navbar-brand {
@@ -210,8 +211,8 @@ a, a:hover, a:focus {
   .img-responsive{padding: 50px 0 0 0; margin-bottom: 1em;}
   .about-well{font-size:16px;}
   .body{font-size:14px;}
-  .text-uppercase{font-size:13px;}
-  .navbar-brand{font-size:18px;}
+  .text-uppercase{font-size:14px;}
+  .navbar-brand{font-size:20px;}
   .row.content {height: auto;} 
   .main-content{margin-left:0%;}
   .research-top-title{margin:50px 0 0 0;}
