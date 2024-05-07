@@ -66,6 +66,12 @@ body {
     text-decoration:none;
 }
 
+/* Name in top left */
+.navbar-brand {
+  color: #636363!important
+}
+
+
 .sidebar-link {
     color: #6f6f6f!important;
     text-decoration: none;
@@ -208,6 +214,8 @@ a, a:hover, a:focus {
 /* Small screen over-rides */ 
 @media screen and (max-width: 767px) {
   .img-responsive{padding: 0px 50px 0 50px; margin-bottom: 1em; margin-top: 2.75em;}
+  .top-header{margin-top:0.5em;}
+  .research-header{color:#403f3f}
   .about-well{font-size:16px;}
   .body{font-size:14px;}
   .text-uppercase{font-size:14px;}
