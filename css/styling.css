@@ -109,6 +109,11 @@ body {
     border-bottom-right-radius:0.5em;
   }
 
+  /* Research well spacing */ 
+  .panel-heading{
+    padding: 2px 5px 8px 15px;
+  }
+
   /* Headers */ 
   h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Lato", Helvetica, Arial, sans-serif;
