@@ -27,12 +27,17 @@ body {
   }
 .about-well{
     font-size: 18px;
+    padding: 19px 19px 2px 19px;
 }
 .well-head {
   margin-top:0px;
   margin-bottom:10px;
 }
 
+.about-well-head {
+  margin-top:-2px;
+  margin-bottom:5px;
+}
 /* standardize coloring of many elements */ 
 .about-well, .list-group, .list-group-item {
     background-color: #f9f9f9;
