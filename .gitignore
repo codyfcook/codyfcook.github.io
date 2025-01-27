@@ -1,3 +1,7 @@
 *.ipynb_checkpoints/*
 .DS_Store
 *.DS_Store
+*.log
+*.aux 
+*.out
+papers/.DS_Store
