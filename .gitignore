@@ -4,4 +4,6 @@
 *.log
 *.aux 
 *.out
+*.fls 
+*.fdb_latexmk
 papers/.DS_Store
