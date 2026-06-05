@@ -46,12 +46,13 @@ jobs:
         with:
           script: |
             const artifacts = [];
+            const runId = Number(process.env.GITHUB_RUN_ID);
             let page = 1;
             while (true) {
               const response = await github.rest.actions.listWorkflowRunArtifacts({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                run_id: context.runId,
+                run_id: runId,
                 per_page: 100,
                 page
               });
@@ -66,7 +67,9 @@ jobs:
             if (artifacts.length <= 1) {
               return;
             }
-            artifacts.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
+            artifacts.sort(
+              (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            );
             for (const artifact of artifacts.slice(1)) {
               await github.rest.actions.deleteArtifact({
                 owner: context.repo.owner,
