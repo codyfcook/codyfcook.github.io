@@ -1,0 +1,91 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+  cleanup-artifacts:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Remove duplicate Pages artifacts
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifacts = [];
+            const runId = process.env.GITHUB_RUN_ID;
+            let page = 1;
+            while (true) {
+              const response = await github.rest.actions.listWorkflowRunArtifacts({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: runId,
+                per_page: 100,
+                page
+              });
+              artifacts.push(
+                ...response.data.artifacts.filter((artifact) => artifact.name === 'github-pages')
+              );
+              if (response.data.artifacts.length < 100) {
+                break;
+              }
+              page += 1;
+            }
+            if (artifacts.length <= 1) {
+              console.log('No duplicate artifacts found, skipping cleanup');
+              return;
+            }
+            artifacts.sort(
+              (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            );
+            for (const artifact of artifacts.slice(1)) {
+              await github.rest.actions.deleteArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: artifact.id
+              });
+            }
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: cleanup-artifacts
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
